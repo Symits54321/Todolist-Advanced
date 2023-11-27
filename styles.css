@@ -58,7 +58,7 @@ button{
 
 
 #to-do-list{
-    width: 550px;
+    max-width: 550px;
     height:auto;
     background-image:linear-gradient(-155deg ,var(--bg-theme1),var(--bg-theme2));
     padding: 10px;
@@ -128,9 +128,9 @@ input:focus{
   box-shadow: 2px 2px 1px 1px black inset;
 }
 #small-nav{
- width:450px;
+ width:100%;
  height:23px;
- margin-top:10px;
+ margin:20px 0px 5px 0px ;
  display: flex;
  justify-content: space-between;
  position: relative;
@@ -138,7 +138,7 @@ input:focus{
 }
 #small-nav>button{
   color: aliceblue;
-  width:30%;
+  width:auto;
   height:95%;
  
   background-color: transparent;
@@ -243,16 +243,18 @@ li {
 }
 .checked{
   background-image: url(icons/circle-check-regular.svg);
+  background-repeat: no-repeat;
 }
 
 .textline {
-  width: 400px;
+  width: 70%;
   height: 100%;
   margin-left: 5px;
   padding: 7px;
   font-weight: 100;
   font-size: 15px;
   padding-top: 10px;
+  word-wrap: break-word;
 }
 
 
@@ -261,12 +263,12 @@ li {
 .deleted {
   display:none;
     width: 20px;
-    height: 59%;
+    height: 20px;
     border: 1px solid black;
     border-radius: 2px;
     background-color: var(--bg-delete);
     padding: 2px;
-    box-shadow: 2px 2px 5px 1px black;
+    box-shadow: 2px 2px 5px 1px rgb(129, 128, 128);
    
     position: absolute;
     right:9px;
@@ -298,7 +300,7 @@ li {
   /*------------------- BOTTOM ----------------- */
 
  section#footer{
-    width: 400px;
+    width: 100%;
     height:50px;
     display: flex;
     flex-direction: row;
@@ -309,14 +311,16 @@ li {
   }
   p{
     margin: 2px;
+   
   }
   #task-categories{
     margin-left:auto;
+    display: flex;
   }
   #task-categories>button{
     height:30px;
      background-color: var(--bg-categorybutton);
-     color: white;
+     color:black;
      box-shadow: var(--shadow);
      border-radius: 4px;
   }
@@ -332,4 +336,14 @@ li {
 }
   #total-task > p{
     color: aliceblue;
+    font-weight: 100;
+    text-align: center;
+  }
+
+
+ 
+  @media screen and (max-width: 750px) {
+      .deleted {
+          display: block;
+      }
   }
