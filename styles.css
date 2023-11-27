@@ -131,6 +131,8 @@ input:focus{
  width:450px;
  height:23px;
  margin-top:10px;
+ display: flex;
+ justify-content: space-between;
  position: relative;
 
 }
@@ -152,11 +154,7 @@ input:focus{
     transform: scale(95%);
 }
 
-  #clearcompleted{
-        position: absolute;
-        right: 0px;
-  }
-
+ 
 
 #list-section{
     width:80%;
@@ -167,12 +165,22 @@ input:focus{
 
 }
 
-/* #list>ul>li{
-    width:80%;
-    height:30px;
-    border: 1px solid var(--bordercolor3) ;
+#list-head{
+  width:100%;
+ display: flex;
+ justify-content: space-between;
+ margin:15px 0px;
 
-} */
+}
+
+#list-head>span{
+    
+  background-color: #f9d9d9;
+  flex-grow: 0.7;
+  text-align: center;
+  padding:5px 5px;
+  border-radius: 2px;
+}
 
 ul{
     width:100%;
@@ -190,7 +198,7 @@ ul{
 
 li {
   width: 97%;
-  height: 35px;
+  min-height: 35px;
   display: flex;
   /* justify-content: space-between; */
   align-items: center;

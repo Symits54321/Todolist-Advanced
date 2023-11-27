@@ -4,14 +4,75 @@ let input = document.querySelector('#inputText');         //inputtext
 let totalTask = document.querySelector('#tasknum');       //Total number of task
 let listbox=document.querySelector('#list-section>ul');   //Unorder list
 
-
+let categorybanner=document.querySelector('#list-head>span'); 
 
 
 //let task=[];       //each elements of task must have id,boolean(completed)
 
+let taskobj = {
+    default:[]
+}
 
-let taskstorage = JSON.parse(localStorage.getItem('tasks'));
-let task = taskstorage ? taskstorage : []; 
+let taskstorage = JSON.parse(localStorage.getItem('taskobj'));
+let taskObj = taskstorage ? taskstorage : taskobj; 
+
+//category set
+let categoryChached = localStorage.getItem('categoryTask');
+let category = categoryChached ? categoryChached : "default";
+
+//make task as category
+
+let task = taskObj[category];
+
+let taskCatArray = Object.keys(taskObj);
+
+
+async function tooglecat(x){
+
+    let taskCatLength = taskCatArray.length;
+    let taskindex = taskCatArray.indexOf(category);
+
+    taskindex+=x;
+
+    if(taskindex>=taskCatLength){
+        taskindex=taskindex-taskCatLength;
+    }else if(taskindex<0){
+        taskindex=taskCatLength+taskindex;
+    }
+
+    
+    changecat(taskCatArray[taskindex]);
+
+    localStorage.setItem('categoryTask', category);
+    categorybanner.innerText=category;
+}
+
+async function changecat(catnamed){
+
+     //move to new category
+     category=catnamed;
+     task=taskObj[category];
+     categorybanner.innerText=category;
+     
+ 
+     //refresh page
+     refresh(task,'add');
+
+}
+
+
+async function createcat(catname){
+
+    if (!taskObj[catname]) {
+        taskObj[catname] = []; // If the category doesn't exist, create it
+    }else{
+        alert('task already created through this name');
+    }
+
+   
+  changecat(catname);
+   
+}
 
 all(); // to refresh all in local storage
 
@@ -40,6 +101,7 @@ function add(){
 function deleted(id){
     // remove the element from array which matches the corresponding id
     task = task.filter(t => t.id !== id);
+    taskObj[category]=task;
     // refresh
     refresh(task,deleted);
     // refresh the task number
@@ -66,7 +128,7 @@ function refresh(arr,path){
 
     listbox.innerHTML = '';
    
-   
+    categorybanner.innerText=category;
 
     // iterating task array for each operation.
     for(let i=0; i<arr.length; i++){
@@ -110,7 +172,7 @@ function refresh(arr,path){
     listHover();
 
     //refresh local storage
-    localStorage.setItem('tasks', JSON.stringify(task));
+    localStorage.setItem('taskobj', JSON.stringify(taskObj));
 
 }
 
@@ -213,6 +275,33 @@ function allInputClick(e){
         toggleCheck(id);
         console.log("li clicked");
       }
+
+    //add category
+    if(clicked.id === 'addnewcat'){
+
+        if(input.value){
+
+            createcat(input.value);
+
+            input.value='';
+
+        }
+
+
+    }
+
+    // toggle category
+    if(clicked.id === 't-plus'){
+       tooglecat(+1);
+    }
+
+
+    if(clicked.id === 't-minus'){
+        tooglecat(-1); 
+    }
+
+   
+    
 
     //All
     if(clicked.id === 'all'){
