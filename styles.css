@@ -132,7 +132,7 @@ input:focus{
  height:23px;
  margin:20px 0px 5px 0px ;
  display: flex;
- justify-content: space-between;
+ justify-content: space-evenly;
  position: relative;
 
 }
