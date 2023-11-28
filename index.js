@@ -71,6 +71,10 @@ async function createcat(catname){
 
    
   changecat(catname);
+ 
+  //refresh toogle data
+  taskCatArray = Object.keys(taskObj);
+  tooglecat(0);
    
 }
 
