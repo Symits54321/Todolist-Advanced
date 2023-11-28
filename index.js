@@ -337,7 +337,15 @@ function allInputClick(e){
       console.log(clicked);
 }
 
+
+
+
 function listHover(){
+    // Define a media query string
+    const mediaQuery786 =  window.matchMedia('(min-width: 768px)');
+
+
+    if (mediaQuery786.matches) {
     // Get all the li elements
     const listItems = document.querySelectorAll('li');
 
@@ -356,6 +364,8 @@ function listHover(){
         deleteButton.style.display = 'none';
     });
     });
+
+    }
 
 }
 

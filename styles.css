@@ -346,4 +346,10 @@ li {
       .deleted {
           display: block;
       }
+
+      ul{
+        width:100%;
+        min-height: 40vh;
+      }
+
   }
