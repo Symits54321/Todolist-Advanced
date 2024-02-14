@@ -80,6 +80,7 @@ async function createcat(catname){
 
 all(); // to refresh all in local storage
 
+
 function add(){ 
     // alert("Add button welcome");
    
@@ -111,6 +112,7 @@ function deleted(id){
     // refresh the task number
     setTimeout(refreshTaskNo(),20);
 }
+
 
 function toggleCheck(id){
     // find the task and mark it as completed

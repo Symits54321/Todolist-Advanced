@@ -49,7 +49,17 @@ font-family: sans-serif;
 
     box-sizing: border-box;
     
+}
 
+.heading{
+  color: aliceblue;
+}
+
+.power{
+  color: aliceblue; 
+  font-size: 0.79em; 
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  transform: translate(100px,-70px);
 }
 
 button{
